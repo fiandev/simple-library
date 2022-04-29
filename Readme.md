@@ -26,6 +26,6 @@ sebuah program yang dibuat dengan tujuan untuk mengelola sebuah data
 
 ### preview
 
-
+![image](https://github.com/candradwicahyo/simple-library/blob/master/20220429_213001.jpg)
 
 > dibuat oleh **candra dwi cahyo**
