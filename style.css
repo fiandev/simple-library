@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --roboto: 'Roboto';
+  --gray: #f4f7fe;
+  --green: #4caf50;
+  --red: #f07676;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--roboto), sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  margin: 30px auto;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.button {
+  position: relative;
+  height: 45px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.5s;
+  overflow: hidden;
+  color: #fff;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0.2;
+  transition: 0.5s ease;
+}
+
+.button:hover::before {
+  left: 0;
+}
+
+.button-blue {
+  background: royalblue;
+}
+
+.button-red,
+.badges-red {
+  background: var(--red);
+}
+
+.mr-1 {
+  margin-right: 10px;
+}
+
+.input {
+  position: relative;
+  height: 45px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: var(--gray);
+  transition: 0.5s;
+}
+
+.input.active {
+  background: var(--red);
+  color: #fff;
+}
+
+.table-container {
+  position: relative;
+  overflow-x: scroll;
+}
+
+.table {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.table thead tr,
+.table tbody tr {
+  transition: 0.5s;
+}
+
+.table thead tr th {
+  padding: 15px 20px;
+  background: royalblue;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.table tbody tr {
+  background: #fff;
+}
+
+.table tbody tr:hover {
+  background: var(--gray);
+}
+
+.table tbody tr td {
+  padding: 15px;
+  font-size: 13px;
+}
+
+.table tbody tr .td-status {
+  text-align: center;
+}
+
+.table tbody tr .td-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table tbody tr td .icon i {
+  color: var(--red);
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 17px;
+}
+
+.badges {
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+  display: inline-block;
+}
+
+.badges-green {
+  background: var(--green);
+}
+
+.ml-1 {
+  margin-left: 10px;
+}
+
+.form-wrapper {
+  position: absolute;
+  top: -200%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gray);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.form-wrapper.active {
+  top: 0;
+}
+
+.form-wrapper .box {
+  position: relative;
+  width: 350px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 10px 20px 35px #f0f0f0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.form-wrapper .box .box-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.form-wrapper .box .box-wrapper h3 {
+  font-size: 21px;
+  color: royalblue;
+  letter-spacing: 1px;
+}
+
+.form-wrapper .box .box-wrapper .close-button {
+  font-size: 20px;
+  color: silver;
+  cursor: pointer;
+}
+
+.form-wrapper .box .form,
+.form-wrapper .box .form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper .box .form .form-group .input {
+  margin: 10px 0;
+}
+
+.form-wrapper .box .form .form-group .limit-number {
+  font-size: 12.5px;
+  margin-bottom: 5px;
+  color: silver;
+  text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  
+  .wrapper .button-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .wrapper .button-wrapper .button {
+    margin-bottom: 5px;
+  }
+  
+  .wrapper .input {
+    width: 80%;
+  }
+}
