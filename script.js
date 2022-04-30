@@ -1,5 +1,54 @@
-window.onload = () => {
-  
+const cookie = localStorage;
+let list = localStorage.getItem("list");
+const tableBody = document.querySelector('.table-body');
+/* if cookie exist */
+if (list) {
+  list = JSON.parse(list)
+  list.forEach(item => {
+    let name = item.name
+    let status = item.status
+    let author = item.author
+    let page = item.page
+    const tr = document.createElement('tr');
+    const tdName = createSimpleElement('td', name, 'td-name');
+    const tdAuthor = createSimpleElement('td', author, 'td-author');
+    const tdPages = createSimpleElement('td', `${page} pages`, 'td-pages');
+    
+    // td status
+    const tdStatus = document.createElement('td');
+    tdStatus.className = 'td-status';
+    const badges = document.createElement('span');
+    badges.className = `badges ${(status == 'read') ? 'badges-green' : 'badges-red'}`;
+    const badgesValue = document.createTextNode(status);
+    badges.appendChild(badgesValue);
+    tdStatus.appendChild(badges);
+    
+    // td option
+    const tdOption = document.createElement('td');
+    tdOption.className = 'td-option';
+    const span = document.createElement('span');
+    span.className = 'icon';
+    const icon = document.createElement('i');
+    icon.className = 'fa-solid fa-trash';
+    icon.addEventListener('click', () => deleteData(tr));
+    span.appendChild(icon);
+    tdOption.appendChild(span);
+    
+    tr.appendChild(tdName);
+    tr.appendChild(tdAuthor);
+    tr.appendChild(tdPages);
+    tr.appendChild(tdStatus);
+    tr.appendChild(tdOption);
+    
+    if (tableBody.appendChild(tr)) {
+      sweetalert('success', 'Success!', 'data baru berhasil ditambahkan!');
+      searchData(tr, name, author, page, status);
+      deleteAllData();
+    }
+  })
+} else {
+  list = []
+}
   // form page
   const buttonFormPage = document.querySelector('.form-page');
   buttonFormPage.addEventListener('click', () => formPage('active'));
@@ -103,9 +152,16 @@ window.onload = () => {
     return element;
   }
   
-  const tableBody = document.querySelector('.table-body');
   
   function addData(inputName, inputAuthor, inputPages, inputStatus) {
+    let data =  {
+      name: inputName.value,
+      status: inputStatus.value,
+      author: inputAuthor.value,
+      page: inputPages.value
+    }
+    list.push(data)
+    cookie.setItem("list", JSON.stringify(list))
     const tr = document.createElement('tr');
     
     const tdName = createSimpleElement('td', inputName.value, 'td-name');
@@ -192,4 +248,3 @@ window.onload = () => {
     });
   }
   
-}
